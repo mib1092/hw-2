@@ -23,6 +23,8 @@ require 'vendor/autoload.php';
 
         <?php
             if ($_POST) {
+                PHP_Timer::start();
+
                 require './vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
                 $mail = new PHPMailer;
 
@@ -35,7 +37,7 @@ require 'vendor/autoload.php';
                 $mail->Port = 587;
 
                 $mail->setFrom('hw2@example.com', 'Advanced PHP');
-                $mail->addAddress('mazurenko.ihor@gmail.com', 'Ihor');
+                $mail->addAddress('iigore4ekk@gmail.com', 'Ihor');
                 if ($_POST['email']) $mail->addReplyTo($_POST['email'], $_POST['name']);
 
                 $mail->isHTML(true);
@@ -43,11 +45,14 @@ require 'vendor/autoload.php';
                 $mail->Subject = 'Homework 2, new message';
                 $mail->Body = "Name: {$_POST['name']}<br/>\r\nEmail: {$_POST['email']}<br/>\r\nPhone: {$_POST['tel']}<br/>\r\nDate: {$_POST['date']}<br/>\r\nMessage: {$_POST['msg']}";
 
+                $time = PHP_Timer::stop();
+
                 if (!$mail->send()) {
-                    echo 'Message could not be sent.';
-                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                    echo "<strong>Message could not be sent.</strong>";
+                    echo "<strong>Mailer Error:</strong> " . $mail->ErrorInfo;
                 } else {
-                    echo 'Message has been sent';
+                    echo "<strong>Message has been sent!</strong><br>\r\n";
+                    echo "<h3>Submitting took:</h3> " . PHP_Timer::resourceUsage();
                 }
             }
         ?>

@@ -2,8 +2,8 @@
     "name": "vendor/custom-funcs",
     "description": "My custom description",
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=5.3.3",
         "phpmailer/phpmailer": "~5.2",
-        "symfony/form": "^3.1"
+        "phpunit/php-timer": "^1.0.5"
     }
 }

@@ -1,0 +1,9 @@
+{
+    "name": "vendor/custom-funcs",
+    "description": "My custom description",
+    "require": {
+        "php": ">=5.6.0",
+        "phpmailer/phpmailer": "~5.2",
+        "symfony/form": "^3.1"
+    }
+}
